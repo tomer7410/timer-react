@@ -22,8 +22,8 @@ function App() {
   }
   useEffect(()=>{
     return(()=>{
+      console.log("cleanup from empty");
       clearInterval(timer.current)
-     
     })
   },[])
   useEffect(()=>{
@@ -34,7 +34,8 @@ function App() {
     } 
     if(number === 40) clearInterval(timer.current) //last
     return(()=>{
-      window.removeEventListener("beforeunload", writeCookie);
+     console.log("cleanup from unempty");
+     window.removeEventListener("beforeunload", writeCookie);
     })
   },[number])
   const writeCookie = () =>{
